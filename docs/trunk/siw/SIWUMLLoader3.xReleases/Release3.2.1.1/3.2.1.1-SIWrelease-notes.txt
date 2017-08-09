@@ -1,0 +1,48 @@
+###############################################
+##############     New Features   #############
+###############################################
+
+GF 2600, 6256, 6257 : Users can now map inherited attribute to existing CDEs, existing VDs or local Value Domains
+GF 6259 : Roundtrip now maps inherited attributes
+GF 4358 : Note is added to clarify who should run what SIW step
+GF 4432 : Users can now see when an inherited attribute is incorrectly redifined in a child class
+GF 4661 : SIW Wizard now shows version number as well as mode it's running in
+GF 5452 : Using caCORE 3.2.1.1 client
+GF 6255 : Inherited attribute view no longer show mapping for the parent, but it's own mapping
+GF 6853 : Defaults is removed from the 'Run' menu
+GF 7905 : SIW now reports when the total length of an attribute definition (class + attribute) is over 200- characters
+
+
+###############################################
+##############      Bug Fixes     #############
+###############################################
+
+GF 1093 : Value Domain definitions is not wrapped in a text area so large texts fit within the pane
+GF 1357 : Semantic Connector now correctly search for all terms of a camel cased word (redRock for example)
+GF 3459 : Associations are always displayed using classes names rather than caDSR "long names"
+GF 4298 : Missing concept error messages have changed
+GF 4446 : Associations are visible in review unannotated mode
+GF 4605 : Missing descriptions or documentations are now flagged as errors
+GF 5339 : Missing concept tags errors in associations are now reported in SIW
+GF 5386 : Invalid datatype errors now show in review unannotated mode
+GF 6001 : 'Find' function now working as intended
+GF 6122 : public and private API work identically
+GF 6412 : Incorrect errors no longer reported when mapping an attribute to a Value Domain
+GF 6742 : CADSR_DE_ID / VERSION no longer duplicated when saving models
+GF 7375 : Saving a model with self pointing associations no longer generates error
+
+###############################################
+##############    Known Issues    #############
+###############################################
+
+GF 8965 : CDE mapping for Inherited attributes is filtered by the parent attribute, however SIW records the mapping as an error
+GF 8868 : Parent VD is used when Child VD has the same long name but different public ID
+GF 8835	: Screen jumps around after clearing the CDE from an inherited attribute
+GF 8761	: A publicID with a space breaks SIW when using publicAPI
+GF 8759	: We are not filtering annotation options at the parent level when an inherited attribute is annotated first
+GF 8660	: EVS Search results display 0 of 1 when no matches are found
+GF 8370	: Map to CDE and Map to VD should not appear at the same level
+GF 8369	: Map to DE and Map to CDE inconsistencies
+GF 8368	: Cannot map child to concepts if parent is mapped to concepts
+GF 8367	: Unable to view parent concepts at the child level
+GF 8241	: Unable to see SIW mode in title bar because filename is too long

@@ -1,0 +1,28 @@
+                          Release Notes
+    
+================================================================
+                           3.0 caDSR
+================================================================
+
+-------------------------------------------------
+    3.3  Bugs Fixed Since Last Release
+-------------------------------------------------
+    
+    
+    +------------------------------------+
+    | CDE Browser                        |
+    +------------------------------------+
+
+  o Clicking on a Form in the Search Tree now displays the CDE's
+    associated with that Form without incorrectly presenting
+    a Form Builder login prompt. [GForge #3816]
+
+  o Expanding a tree node accessed by scrolling down the tree
+    keeps focus on the expanded node.  Previously focus shifted
+    back up the Search Tree, which forced users to scroll back
+    down the tree to see the expanded node [Gforge #3881]
+
+  o Clicking on the top level node, "caDSR Contexts" no longer
+    generates an error.  Clicking on this node now searches
+    across all Contexts. [GForge #3918]
+

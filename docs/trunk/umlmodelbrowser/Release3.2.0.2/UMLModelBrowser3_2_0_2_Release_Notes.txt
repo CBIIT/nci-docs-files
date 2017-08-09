@@ -1,0 +1,73 @@
+UML Model Browser 3.2.0.2
+June 2007
+
+
+*************************************
+************               **********
+************ New Features  **********
+************               **********
+*************************************
+
+  - Instruction "If you don't see a recently loaded model, please click
+    Refresh tree" is added to the tree. (GF 4650).
+
+
+*************************************
+************               **********
+************   Bug Fixes   **********
+************               **********
+*************************************
+
+  - Materialized views were fixed to remove duplicates in classes and
+    attributes. (GF 4546)
+
+  - Inherited classes without model specific definitions were not
+    displaying properly in the UML Model Browser. To fix this bug report, since
+    model owner documentation is a caBIG compatibility requirement, the missing 
+    definitions were added by curators using original model owner
+    documentation. Where no definition was provided in the model documentation,
+    the definition was set to "No definition loaded". (GF 4092)
+ 
+  - Inherited attributes did not have any definitions and were not displaying
+    in the UML Model Browser. Definitions were added to the inherited
+    attributes as
+
+        childClass definition + parentClassAttribute definition
+
+    Where no definition was provided in the model documentation, the definition
+    was set to "No definition loaded". (GF 4092)
+
+  - Alt Def type has been changed to "UML Class:UML Attr" instead of
+    "UML Class : UML Attr". (GF 3133)
+
+  
+*************************************
+************               **********
+************ Known Issues  **********
+************               **********
+*************************************
+
+  - Classes still show up twice in the same model in search results
+    Workaround: The UML Model Browser view uses class names and definitions
+                for each model to display results. If a class has two names are for
+                a given model this will cause it be included in the view twice, once 
+                for each definition.  The fix is to edit the Object Class in caDSR 
+                Admin Tool view the alternate definitions 'classifications', and 
+                eliminate the duplicate. 
+  
+  - When sorting columns of results, the column name appears only when the 
+    default column is used as the sort method. The column name is omitted when
+    choosing any other column. The result being the users do not know which
+    column is being used to sort. (GF 7145)
+
+  - When a UML Model Browser session expires two links appear to refresh the
+    session.  Both of these links, the HOME icon and the word "here", reference
+    an invalid URL. (GF 7166)
+
+  - Reset button does not clear the version field. (GF 7203)
+
+  - After versioning a CS, only the new CS appears in the tree. However both
+    versions appear in the search drop-down. (GF 7362)
+
+
+

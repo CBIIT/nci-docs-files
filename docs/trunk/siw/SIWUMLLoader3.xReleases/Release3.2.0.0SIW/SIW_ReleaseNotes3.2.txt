@@ -1,0 +1,96 @@
+
+SIW 3.2
+March 2007
+
+
+*************************************
+************ New Features  **********
+*************************************
+
+- Semantic Connector now writes directly into the XMI file using the
+  NCICB XMI Handler. The csv file format is deprecated
+
+- SIW's new XMI Handler opens the default EA XMI exported format.
+  SIW no longer uses or opens "fixed xmi" files.
+
+- SIW now uses Freestyle to query Data Elements. The fields
+  displayed have been modified.
+
+- Data Element serach results now display workflow status
+
+- Search Preferences allow filtering Data Elements by Workflow to
+  exclude "Retired", "Retired Withdrawn" etc 
+
+- SIW can now suggest CDE mappings based on the UML Class
+  and Attribute names
+
+- SIW can display inherited attributes for a class
+
+- Semantic connector's performance has improved
+
+- Association roles, source role and target role can now be annotated
+
+- Users can now review unannotated XMI files. This mode does
+  not display missing concept errors for unmapped classes or attributes
+  so users   can more easily focus on other errors and warnings such as
+  missing class and attribute descriptions, unreferenced Value Domains, 
+  and invalid datatype.  It will display errors for mapped concepts
+  when present in the XMI file, but doesn't flag that they are missing
+  like   it will in the Review Annotated XMI file where it expects that
+  all elements will be mapped to either CDEs or Concepts.
+
+- The errors in SIW can now be exported in XML format by right clicking
+  on 'Errors' panel and selecting "Export Errors"  
+ 
+- The number of results displayed at a time is now configurable for
+  all searches: EVS Link, Search Data Element and Search for Value Domains 
+
+- SIW now offers the ability to expand and collapse the navigation tree
+
+- SIW offers ability to sort elements in the tree by name
+
+- NCI Pre-Thesaurus may be used to validate EVS concepts
+
+- The Value Domain Stereotype can now either be 'enumeration' or 'CADSR Value Domain'
+
+- Class and attributes can now have definitions longer than 255 characters
+  (e.g. tag name 'description' for the attribute's 1st tag, description[n]
+   without a space for 2-8, limit is 2000 characters, or 8 tags total)
+
+- Semantic Connector includes a package filter function to exclude packages
+  from beign re-run through automated concept mapping
+
+- Concepts in the concept editor panel can be removed no matter where they
+  stand in the queue
+
+- The Value Domain Panel now displays publicID and datatype
+
+- CDE search results now display workflow status
+
+- CDE Search Preferences allow filtering by Workflow to exckude "Retired",
+  "Retired Withdrawn" etc 
+
+- SIW displays a warning when two classes are tied by more than one association
+
+- SIW warns the user when mapping a CDE to an attribute results in
+  automatically mapping the CDE's Object Clas to the attributes owning Class
+
+
+ 
+*************************************
+************               **********
+************ Known Issues  **********
+************               **********
+*************************************
+
+- On Microsoft Windows, it has been found that dialog windows are sometimes
+  placed behind the main window, which renders the application unusable until
+  the dialog is placed to the front. 
+
+Workaround: 
+- Minimizing other windows or using the "show desktop" feature sometimes fixes
+  this issue, (Windows "Start" button + "D"), as well as closing all Mozilla Windows.  
+
+- UML Loader 3.2 requires that descriptions and documentations be provided for
+  all classes and attributes. SIW however marks missing descriptions as a warning. 
+  Users should treat them as errors. 

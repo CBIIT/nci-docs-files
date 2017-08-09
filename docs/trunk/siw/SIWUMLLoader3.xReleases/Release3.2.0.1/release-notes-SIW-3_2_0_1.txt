@@ -1,0 +1,54 @@
+
+**************************************
+********  New Features ***************
+**************************************
+
+- There were no new features included in this release
+
+**************************************
+********  Bug Fixes  *****************
+**************************************
+Project GFORGE LINK: http://gforge.nci.nih.gov/projects/siw/
+
+- SIW splits Concept definitions tagged values that are longer than 255 characters to several 
+tagged values to represent all the definition parts so it can be re-imported into Enterprise Architect. 
+A maximum of 8 tags is allowed. The format for the tag names is an extension of the existing concpet tag 
+names adding "_n" where n = 2-8.  e.g. ObjectClassConceptDefinition_2, or ObjectClassQualifierConceptDefinition1_2. 
+The same format applies for Property and ValueMeaning tag names when concept definitions exceed 255. (GF 5442)
+
+     NOTE: If you already have an XMI file with long concept definitions (>255 characters), 
+     you must open the XMI file in SIW 3.2.0.1.  You must make a change to the class/attribute, 
+     such that SIW will mark it for resaving, then you must resave the XMI file.  An example of 
+     marking the class/attribute for resaving would be to add a concept then immediately delete it. 
+     This will require you to click the Apply button.  It this Apply button that marks a 
+     class/attribute to be resaved into the XMI file, subsequently splitting the tags in this process.
+     Also note that if there are several classes/attributes that use the same concept, you must 
+     resave EACH of those class/attributes in order to get the changes made throughout the XMI file.
+
+- SIW flags split Concept definitions that skip a number.  (GF 6394)
+    e.g _2, _3, _5 without _4 would throw an error. 
+
+- Reordering of concepts for permissible values has been fixed.  (GF 4742)
+   Previous version would sometimes lose the ordering of the valuemeaning concepts after 
+   navigating away from the item.
+
+- Reordering of concepts for associations has been fixed. (GF 5378)
+    Previous version would sometimes lose the ordering of the valuemeaning concepts after 
+    navigating away from the item.
+
+- SIW should flag errors when sequential tag definitions skip a number or are invalid (GF 6396). 
+
+
+**************************************
+********  Known Issues ***************
+**************************************
+
+- When an invalid tag names is found, the error message is incomplete, you can't tell which XML element
+  the invalid tag is associated with. 
+ 
+  Workaround: You can turn on the java console before launching SIW and all errors are logged. You can view the 
+  exact location of the error, or copy the file and paste into notepad to review it. To turn on Java console, go
+  to the Control Panel, open "Java", click "advanced" >> java console >> select "Show Console".  An alternative is
+  to search the xmi file for the string appearing after the text "Tagged Value .." 
+
+  

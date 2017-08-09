@@ -1,0 +1,71 @@
+CDEBrowser Browser 3.2.0.2
+October 2007
+
+
+*************************************
+************ New Features  **********
+*************************************
+
+  - Value Meaning Concepts and Value Meaning Description were added to the Excel and XML Download.
+    Representation Details including Representation concepts were also added to Exceland XML Download.
+    (GF3541)
+
+  - Representation Details including Representation Concepts were added
+    to the Permissible Values Tab of Data Element Details. (GF2611)
+	
+  - Renamed the following columns in the excel download to better describe their contents (GF 8166)
+	Old Names				New Names
+	---------				---------
+	Workflow Status				Data Element Workflow Status
+	Registration Status			Data Element Registration Status
+	Begin Date				Data Element Begin Date
+	Source					Data Element Source
+	Value Meaning				Value Meaning Name
+	Classification Scheme Short Name	Classification Scheme Short Name(GF# 8873)
+	Alternate Name Context Name		Data Element Alternate Name Context Name
+	Alternate Name Context Version		Data Element Alternate Name Context Version
+	Alternate Name				Data Element Alternate Name
+	Alternate Name Type			Data Element Alternate Name Type
+		
+  - An additional Excel download link has been added to the search results page and the CDE cart page. One link allows the user to download 
+    data in the format provided prior to 3.2.0.2 while the other link downloads the current 3.2.0.2 verion.
+    The mouse hover over the two links will display the explanation text for the links.
+
+
+  - Tree performance has been imroved when clicking on the classification scheme node.(GF4021)
+	 
+
+
+*************************************
+************               **********
+************   Bug Fixes   **********
+************               **********
+*************************************
+
+
+  - The Classification Scheme Version and Context Version were corrected for the 
+    Excel download. (GF 3751)
+
+  - The Bread Crumbs are reset to caDSR Contexts When new search is clicked. (GF 3919)
+
+  - Concatenated VM Concepts Displaying in Browser with Semi-Colons Separators. (GF 3393)
+	
+  - Representation Terms were added before valid values(permissible values)  (GF 8164)
+
+ 
+*************************************
+************               **********
+************ Known Issues  **********
+************               **********
+*************************************
+
+  - Unicode error during XML and incorrect results in Excel download 
+    for CDE with large VD (GF#7654)
+
+  - Primary Concept Indicator is missing for certain value meanings(GF#7669)
+
+  - VM concept codes are not added to excel download via CDE Compare feature (GF#7656)
+
+  - Forms associated with Protocol Forms node in tree do not display when node is expanded (GF# 9046)
+
+

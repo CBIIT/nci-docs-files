@@ -1,0 +1,71 @@
+                          Release Notes
+    
+                           CDE BROWSER
+                          Version 3.2.0.5
+                           February 13, 2008
+
+       National Cancer Institute Center for Bioinformatics
+
+
+================================================================
+                            Contents
+================================================================
+
+
+    1.0 Release History
+    2.0 New Features and Updates
+    3.0 Bugs Fixed Since Last Release
+    4.0 Known Issues
+
+
+
+----------------------------------------------------------------
+    1.0 Release History
+----------------------------------------------------------------
+
+    3.2.0.5
+
+    -- 13 February 2008
+
+    3.2.0.4
+
+    -- 30 January 2008
+
+    3.2.0.3
+
+    -- 10 December 2007
+
+    3.2.0.2
+
+    -- 17 October 2007        
+
+    3.2
+
+    --  7 February 2007
+
+    3.1
+
+    -- 22 February 2006
+    
+----------------------------------------------------------------
+    2.0 New Features and Updates
+----------------------------------------------------------------
+
+    --  none
+
+
+----------------------------------------------------------------
+    3.0 Bugs Fixed Since Last Release
+----------------------------------------------------------------
+
+    --  Forms associated with Protocol Forms node in tree were not displayed when the node was expanded.
+	The filters in the tree have been modified to allow Protocol forms to be
+	displayed. The displayed forms are sorted alphabetically (GF 9046)
+
+
+----------------------------------------------------------------
+    4.0 Known Issues
+----------------------------------------------------------------
+    
+    --  caDSR Browser Not Displaying Alternate Names and Definitions Correctly (GF 11978)
+	Workaround: Refreshing the page will display all the alternate names and definitions.

@@ -1,0 +1,180 @@
+
+caLIMSv2.c3i0 Milestone Release
+Installation Guide
+04/2011
+
+
+
+Table of Contents
+1.	OBTAIN THE CALIMSV2.C3I0 SOURCE CODE		3
+2.	ASSUMPTIONS					3
+3.	PREREQUISITES					3
+4.	INSTALLING JAVA & ANT				3
+5.	INSTALLING POSTGRESQL				4
+6.	CONFIGURING THE USER PROFILE			4
+7.	CREATING USER ‘DBADMIN’				5
+8.	BUILDING THE CALIMSV2.C3I0 APPLICATION		6
+8.1.	UPDATE INSTALLATION PROPERTY FILE		6
+INSTALLING LOCAL INSTANCE OF CALIMS			6
+INSTALLING FOR ACCESSIBILITY BY OTHERS OVER A NETWORK	7
+8.2.	BUILD AND INSTALL CALIMSV2.C3I0			7
+8.3.	VERIFY INSTALLATION SUCCESS			7
+9.	ADDING USERS TO THE CALIMSV2.C3I0 SYSTEM	8
+9.1.	EDIT THE PROPERTIES-SERVICES.XML FILE		8
+9.2.	EDIT THE JBOSS-SERVICE.XML FILE			8
+9.3.	STARTUP JBOSS					9
+9.4.	ACCESS THE UPT APPLICATION			9
+
+
+
+
+
+
+
+
+
+
+1. Obtain the caLIMSv2.c3i0 Source Code
+
+caLIMSv2.c3i0 source code can be downloaded from the caLIMS v2 Project wiki – Software page (https://wiki.nci.nih.gov/x/V6Cl).  
+
+Download the calimsv2c3i0.0.zip file and unzip it in an appropriate location on your host machine.
+2. Assumptions
+
+These instructions assume the user will be installing caLIMSv2.c3i0 on a platform running some version of the Linux operating system and using the bash shell.
+
+These instructions are for an administrator user who is familiar with installing in a Linux environment, running installation scripts, and editing configuration files. 
+3. Prerequisites
+
+Before running the installation, the following software needs to be installed to create the correct environment for the caLIMSv2.c3i0 application to build and run properly.
+* Java 1.6 (http://www.java.com/en/download/manual.jsp)
+* Apache Ant 1.7 (http://archive.apache.org/dist/ant/binaries/)
+* PostgreSQL 8.4 (http://www.postgresql.org/download/)
+4. Installing Java & Ant
+
+To install Ant, untar/unzip the download file into a directory of your choice.  
+
+For Java, untar/unzip the download file and run the binary after making the file executable with the following command:
+
+chmod +x  {java installer filename}
+5. Installing PostgreSQL 
+1. Place the postgresql-8.4.4-1-linux-x64.bin file in the /opt directory or some other directory if you wish.
+2. As the sudo user, change the permissions on the postgres file to ‘execute’ by running: 
+chmod + postgresql-8.4.4-1-linux-x64.bin
+3. Then, run the file by using the following command:
+./postgresql-8.4.4-1-linux-x64.bin
+4. When prompted, accept all the default values by pressing return, and, when prompted for a password, enter 'postgres'.
+5. Accept the default port.
+6. Select choice 1 for default locale1.
+7. Select Y for installing in template1 database.
+8. Select Y to begin installing Postgres on your computer.
+9. Select No for Launching Stackbuilder.
+10.  After successfully installing the database, create a user called ‘dbadmin’ (Note: You must complete Step 6 before attempting this).
+6. Configuring the User Profile
+
+After installing the required software, the user profile file (.profile) located in the user’s home directory should be edited to add the paths to Ant, Java, and Postgres as shown in the following example:
+
+#!/bin/sh
+export JAVA_HOME=/opt/jdk1.6.0_21
+export ANT_HOME=/opt/apache-ant-1.7.0
+PATH=$ANT_HOME/bin:$JAVA_HOME/bin:/opt/PostgreSQL/8.4/bin:/usr/bin/make:$PATH
+
+After saving the .profile file, you will need to close the terminal you used to edit the file (assuming you used vi) and then launch a new terminal for the changes you made to take effect.
+7. Creating User ‘dbadmin’
+1. Enter the following command. (Note: The .profile of the user running the following psql command needs to have the postgres/bin directory in the profile PATH (see the example .profile file in the preceding section)). 
+psql -U postgres postgres
+2. When prompted for password for user ‘postgres’, enter ‘postgres’.
+3. Enter the following command: 
+create user dbadmin with password 'dbadmin';
+4. Quit the psql session by typing:  \q 
+
+(Note: You must exit the database for the caLIMSv2.c3i0 software installation process to finish, so make sure you quit the database with a “\q” before proceeding.)
+
+8. Building the caLIMSv2.c3i0 Application
+8.1. Update Installation Property File
+
+An install.properties file is included in the ~/trunk/software/build directory. 
+Installing Local Instance of caLIMS
+If you are just building a local instance of caLIMS and are not concerned about your application being accessed by others through a network, you should be able to run the installation with minimal changes to the install.properties file. However, the following information will need to be updated:
+mail.store.protocol=pop3
+mail.transport.protocol=smtp
+mail.receiver=xyz@xyz.com
+mail.pop3.host=pop.gmail.com
+mail.smtp.host=smtp.gmail.com
+mail.smtp.user= xyz@xyz.com
+mail.smtp.password=password
+mail.smtp.port=587
+mail.smtp.auth=true
+mail.smtp.starttls.enable=true
+mail.from= xyz@xyz.com
+mail.debug=false
+
+tempfiledir=${user.home}/apps/uploadfiles
+filesystemrootdir=${user.home}/apps/filesystemroot
+
+Note: The last two parameters are used for file upload and download. These directories need to exist before attempting to upload or download files.
+
+Installing for Accessibility by Others over a Network
+If you wish to install a caLIMSv2.c3i0 instance that can be accessed by others via a network: 
+1. You will need to copy the install.properties file, and then rename it local.properties.  
+2. You will then need to update the properties described in the preceding section as well as the property listed below in the new local.properties file:
+
+jboss.server.hostname=localhost (Note: change this to your IP)
+
+(Important: Any properties that you are not overriding should be commented out in the local.properties. This is very important. If you do not follow this instruction there is a strong chance the build will fail.)
+
+8.2. Build and Install caLIMSv2.c3i0
+At the command line, change to the ~/trunk/software/build directory, and then run the following command:
+ant deploy:local:install
+8.3. Verify Installation Success
+1. Substituting the IP you entered in local.properties, in a browser, go to:
+http://{your IP Here}:30210/calims2-webapp/ 
+2. Enter username: adminuser
+3. Enter password: changeme
+4. You should see the caLIMS2 Homepage appear.
+You can log in with any of the following user names (the passwords are all ‘changeme’): adminuser, customer1, customer2, guest1, labresearcher1, pi1, labmanager1, superuser1, and user03.                
+
+9. Adding Users to the caLIMSv2.c3i0 System
+
+caLIMS2v2.c3i0 comes with sample users installed in the database. To create new users using the User Provisioning Tool (UPT) and Common Security Module (CSM), a preconfigured UPT application and JBoss installation has been packaged within the download.  To create new users, complete the steps described in the following sections.
+9.1. Edit the properties-services.xml file
+The properties-services.xml file is located in the following directory:
+/{your correct path}/calimsv2/csm/jboss-4.0.5.GA/server/default/deploy
+In this file, set the correct path to the security configuration file as follows. 
+<attribute name="Properties">
+gov.nih.nci.security.configFile=/{your correct path}/calimsv2/csm/jboss-4.0.5.GA/server/default/csmconfig/ApplicationSecurityConfig.xml
+</attribute>
+9.2. Edit the jboss-service.xml file
+
+The jboss-service.xml file is located in the directory:
+{your correct path}/server/default/conf 
+
+In this file, set the path to the bindings.xml file to the correct path for your environment as follows:
+
+<mbean code="org.jboss.services.binding.ServiceBindingManager"  name="jboss.system:service=ServiceBindingManager">
+<attribute name="ServerName">bda-ports</attribute>
+<attribute name="StoreURL">file:/{your correct path} /csmupt/jboss-4.0.5.GA/bindings/bindings.xml</attribute>
+<attribute name="StoreFactoryClassName">
+                                                        org.jboss.services.binding.XMLServicesStoreFactory
+</attribute></mbean>
+9.3. Startup Jboss
+
+1. Change to the directory:
+{your correct path}/calimsv2/csm/jboss-4.0.5.GA/bin
+
+2. Run the following command:
+
+./run.sh
+9.4. Access the UPT Application
+
+1. In a browser go to the following URL: http://localhost:46210/uptlogin/
+
+2. Log in with the following information: 
+* LOGIN ID: calims2admin
+* PASSWORD: changeme
+* APPLICATION NAME: caLIMS
+
+Please refer to the CSM/UPT Documentation (https://wiki.nci.nih.gov/x/LQUSAg) to learn how to provision a user. 
+
+caLIMSv2c3i0.0_InstallationGuide_final.docx 	page 10 of 10		printed 3/28/2011
+

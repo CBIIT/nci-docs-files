@@ -1,0 +1,78 @@
+Admin Tool and caDSR Repository 3.2.0.1
+August 2007
+
+
+*************************************
+************ New Features  **********
+*************************************
+
+  - Classification Scheme Version has been added to all view/ edit 
+    screens of the Admin Tool (GF492).
+
+  - A pre filter has been added to the associated concepts list of 
+    values for Value Meanings (GF3815).
+
+  - More attributes have been added to the Object Class Relationship 
+    details for Object classes(GF4201).
+
+  - The serach button has been made visible on all search screens. Public Id 
+    search option has been made visible for Data Element search(GF5417)
+
+  - Scheme Reference of the type "HL7 Scheme Reference" has been added to the 
+    Datatype maintaninance screen(GF6877)
+
+
+*************************************
+************               **********
+************   Bug Fixes   **********
+************               **********
+*************************************
+
+
+  - The Permissible value detail screen has been fixed to show only one value when it
+    is associated with value meanings with multiple concepts(GF680)
+
+  - When a classification Scheme Item is deleted all associated links to alternate names
+    and alternate definitions are also deleted. (GF1274)
+ 
+  - Error Message on Datatype insert action is fixed.(GF6193)
+
+  - Alt Def type has been changed to "UML Class:UML Attr" instead of
+    "UML Class : UML Attr" (GF#3133)
+
+  - Classification Scheme Item name is now fully displayed in the Classification
+    Schemes Items List of Values (GF6337)
+
+  - Conceptual Domain Long name in now displayed for all Value Domain screens and 
+    list of values(GF3417)
+
+  - Context search for Representation Term has been fixed(GF559)
+
+  - Origins of upto a length of 240o characters are now allowed(GF4066)
+
+  - The name columns for the concept derivation rules are now correctly populated(GF5438)
+
+  - The origin columns for the concepts table are now populated(GF2565)
+
+  - Orphan rows from the ac_att_cscsi_ext table has been removed(GF352)
+
+  
+
+ 
+*************************************
+************               **********
+************ Known Issues  **********
+************               **********
+*************************************
+
+  - Conceptual Domain preferred Definition is not word wrapped when accessed from the list of
+    values on value domain search screen(GF8037)
+  - Conceptual Domains for Data Element Concept screens do not show conceptual domain preferred
+    name and not conceptual domain long name(GF8036)
+  - The Database field is not mandatory for new concepts(GF7996)
+  - Origins are not constrained to those presented by the list of values for origin on the 
+    administered components maintenance screens(GF7991)
+  - Long Name is not mandatory for Data Elements(GF7984)
+  - It is not possible to view Classification Scheme Items for Classification Schemes Browse 
+    screens(GF7426)
+

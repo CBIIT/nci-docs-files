@@ -1,0 +1,151 @@
+Release Name: 1.3
+Notes:
+Release Notes
+=============
+
+  #Product:#	caIntegrator
+  #Version:#	1.3
+  #Date:#	June 17 2011
+
+
+Contents
+--------
+
+   1. Introduction
+   2. Release History
+   3. Anticipated Releases
+   4. Features and Defects Addressed in this Release
+   5. Known Issues/Defects
+   6. Bug Reports, Feature Requests and Support
+   7. Documentation and Files
+   8. NCICB Web Pages
+
+
+Introduction
+---------------------------
+
+caIntegrator is a web-based software package that allows researchers to set up custom, caBIG®-compatible web portals to conduct integrative research, without requiring programming experience. These portals bring together heterogeneous clinical, microarray and medical imaging data to enrich multidisciplinary research.
+
+Using caIntegrator, researchers can execute, and save queries to identify and collect many types of data, combining clinical information with genetic and genomic data to enable multidimensional analysis. caintegrator2 uses caGrid analytical services such as GenePattern and BioConductor to perform analysis on the integrated study data, including clinical survival data.
+
+* https://caintegrator.nci.nih.gov/
+
+Release History
+------------------------
+    * caIntegrator2 v1.0.0	-- Oct      2009
+    * caIntegrator2 v1.0.1	-- Jan      2010
+    * caIntegrator2 v1.1.0	-- Jun	    2010
+    * caIntegrator  v1.2.0	-- Sep 	    2010
+    * caIntegrator  v1.3.0	-- Jun	    2011
+
+Anticipated Releases
+------------------------
+    * caIntegrator  v1.4	-- Jan	    2012
+
+
+Highlights of caIntegrator v1.3.0 are:
+-----------------------------------------------
+
+* Visualization capabilties for copyNumber and Expression data using The Integrative Genomics Viewer (IGV). IGV is high-performance visualization tool for interactive exploration of large, integrated datasets. 
+* Visualization capabilties for copyNumber using NCI CGWB Heatmap viewer. Heatmap viewer is a tool for visualization of copy-number data and associated clinical annotations.
+* Support for the caCGHcall grid service  to process copyNumber(CGH) data using Bioconductor CGH package. CGHcall allows users to make an objective and effective classification of their aCGH data into copy number states (loss, normal, gain or amplification).
+* Querying of Copy Number data by Mean Segment Values and by Calls value (Calls values available when caCGHcall service is selected).
+* Capability to use supplemental file from caArray for all supported platforms 
+* Capability to process parsed data from caArray for Agilent Copy Number array.
+* Capability to perform KM Plot of gene expression without a control or reference set
+
+
+Features and Defects Addressed in this Release
+-----------------------------------------------
+
+For a complete list of new features for 1.3 please see https://wiki.nci.nih.gov/display/caIntegrator/caIntegrator+Project+Management (Version 1.3)
+
+
+Known Issues/Defects
+------------------------
+
+1. To perform genepattern grid analysis users should use the following URL
+
+ComparativeMarkerSelectionMAGE:
+http://cagrid.broadinstitute.org:11010/wsrf/services/cagrid/ComparativeMarkerSelMAGESvc
+
+
+GISTIC:
+http://cagrid.broadinstitute.org:10010/wsrf/services/cagrid/Gistic 
+
+
+PCA:
+http://cagrid.broadinstitute.org:6060/wsrf/services/cagrid/PCA
+
+
+PreprocessDatasetMAGE:
+http://cagrid.broadinstitute.org:6060/wsrf/services/cagrid/PreprocessDatasetMAGEService
+
+
+
+2. Technical replicates of supplemental single-sample-per-file expression data are not calculated in caIntegrator. Technical replicates must each have a unique sample name as displayed in column two of the six-column mapping file to be mapped. If the sample names in column two are repeated for a given subject only the last sample in the mapping file will be mapped. See: https://tracker.nci.nih.gov/browse/CAINT-984 
+
+3. When deploying a study with an image data source, caIntegrator may not be able to retrieve more than 1000 images per image series from NBIA. See https://tracker.nci.nih.gov/browse/CAINT-1000 
+
+4. Deployment of large studies can cause java.lang.StackOverflowError? errors. After installation, in the JBOSS installation directory, in the file run.conf, make the following change:
+
+ -XX:ThreadStackSize?=512
+
+5. After loading a subject annotation data source, you may see a status of "Not Mapped" or you may see a status of "Not Loaded". For the subject annotation source, these mean the same thing and indicate that the source needs to be loaded.
+
+6. This release is not supported on IE9. https://tracker.nci.nih.gov/browse/CAINT-980
+
+7. Please refer the deployment instructions at https://wiki.nci.nih.gov/display/sysdeploy/CAINTEGRATOR_R1_3_0_GA+to+PRODUCTION for special instructions
+
+   - This release contains an upgrade to the jdbc driver. Before upgrading, please remove files starting with mysql-connector-java-*, in your JBOSS server library at the following path: 
+
+    jboss-4.0.5.GA\server\default\lib
+
+   - When upgrading to v1.3 from a previous version of caIntegrator, the installation guide describes several critical steps for the upgrade. Of particular importance is the following: 
+
+   - Because of the application name changed in v.1.3, in the JBOSS home directory, locate the war file containing the previous release of caIntegrator2 and delete it. For example, find this file: JBOSS_HOME/server/default/deploy/caintegrator2.war and delete the file named caintegrator2.war. NOTE: In this same directory, there may be a different file named caintegrator.war (without the number 2 in the name) which you should not delete. 
+
+8. A user interested in downloading  the source code and build caIntegrator should make the following changes to the source code. 
+
+                Replace http://node255.broadinstitute.org:11010/wsrf/services/cagrid/ComparativeMarkerSelMAGESvc  http://cagrid.broadinstitute.org:11010/wsrf/services/cagrid/ComparativeMarkerSelMAGESvc
+
+                Replace http://node255.broadinstitute.org:6060/wsrf/services/cagrid/Gistic with http://cagrid.broadinstitute.org:10010/wsrf/services/cagrid/Gistic 
+
+                Replace  http://node255.broadinstitute.org:6060/wsrf/services/cagrid/PCA with http://cagrid.broadinstitute.org:6060/wsrf/services/cagrid/PCA
+
+                Replace http://node255.broadinstitute.org:6060/wsrf/services/cagrid/PreprocessDatasetMAGEService
+		With  http://cagrid.broadinstitute.org:6060/wsrf/services/cagrid/PreprocessDatasetMAGEService
+
+
+See the JIRA tracker for existing open defects, community requests,resolutions and feature requests. 
+
+https://tracker.nci.nih.gov/browse/CAINT
+
+Bug Reports, Feature Requests, And Support
+------------------------------------------
+
+Send email to ncicb@pop.nci.nih.gov to request technical support.  To
+report a bug or request a new feature, please visit the Molecular Analysis Tools
+Knowledge Center resources at:
+
+https://cabig-kc.nci.nih.gov/Molecular/KC/index.php/Main_Page
+
+Existing requests and resolution may be viewed at the caIntegrator GForge URL:
+
+
+
+Documentation And Files
+-----------------------
+
+Links to all documentation and files can be found at:
+
+https://wiki.nci.nih.gov/display/caIntegrator/caIntegrator+Documentation
+
+
+
+NCICB Web Pages
+---------------
+
+    * The NCI Center for Bioinformatics, http://ncicb.nci.nih.gov/
+    * NCICB Application Support, http://ncicb.nci.nih.gov/NCICB/support
+    * NCICB Download Center, http://ncicb.nci.nih.gov/download/

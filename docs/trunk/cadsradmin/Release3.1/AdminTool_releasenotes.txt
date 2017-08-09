@@ -1,0 +1,82 @@
+                          Release Notes
+    
+================================================================
+                           3.0 caDSR
+================================================================
+
+----------------------------------------------------------------
+    3.2 New Features and Updates
+----------------------------------------------------------------
+    
+   
+
+    +------------------------------------+
+    | caDSR Administration Tool          |
+    +------------------------------------+
+   
+    Concept Browse and MAintainance
+    -------------------
+    Curators can now browse and maintain individual concepts from the admin tool
+    
+   Contact Metadata
+    ---------------
+    All administered components can now be assigned contacts. Contacts may either be 
+    organizations or a person. In addition to administered components, classification scheme
+    items may also have contacts associated with them
+
+    Protocol Versioning
+    ------------------------
+    It is now possible to version protocols. Curators can select the Forms the wish the
+    New version of protocol to have
+ 
+    Latest Version Indicator
+    -----------------------------
+    It is possible to look at all the versions for Data Elements, Data Element Concepts, Value Domains
+    and Protocols. Your may set the latest version from a list of all versions of these components
+   
+    Derived Data Element
+    ----------------
+    Curators can now create the rule for a derived data element based on the component 
+    data elements. 
+ 
+    +------------------------------------+
+    | caDSR Database                     |
+    +------------------------------------+
+       
+    Concept Links
+    --------------
+
+    Classification Schemes, Conceptual Domains and Classification Scheme Items may now be 
+    based on concept Derivation rules.
+    
+   Derived Data Element
+    ----------------
+    Component Data Elements of a Derived Data Element may now have leading and trailing string
+    and they may be based on a function
+
+
+    Contact Metadata
+    ---------------
+    All administered components can now be assigned contacts. Contacts may either be 
+    organizations or a person. In addition to administered components, classification scheme
+    items and CS_CSI table may also have contacts associated with them.
+
+    Reference Documents
+    ---------------
+    In addition to administered components, classification scheme
+    items and CS_CSI table may also have reference documents associated with them.
+
+    Forms
+    ---------------
+    It is now possible for forms to be associated with mutiple protocols. Forms and Form Elements can now have
+    Triggered Actions associated with them.
+
+    Questions on a form can have a default value
+    
+    Question on a form may be repeated several times in a module.
+
+
+    Concepts
+    ---------------
+    Component concepts of a concept derivation rules may now have a levelin addition to the display order.
+

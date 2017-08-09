@@ -1,0 +1,28 @@
+**************************************
+********  New Features ***************
+**************************************
+
+- There were no new features included in this release
+
+**************************************
+********  Bug Fixes  *****************
+**************************************
+
+- Loader can read definitions that are split accross multiple tagged values. (GF 5442)
+- Loader flags split definitions that skip a number (GF 6396)
+- Alternate Definition type is changed from "UML Class : UML Attr" to "UML Class:UML Attr" (GF 2923)
+- Loader now returns an error when a definition is longer than 2000 characters (GF 6392 & GF 6842)
+- Loader now correctly searches for CSI name and type when reusing a CSI (GF 7083)
+- Loader performance is improved (GF 7264)
+
+**************************************
+********  Known Issues ***************
+**************************************
+
+- Loader throws an error when attemptng to create a definition longer than 2000 characters, one at a time
+  (GF 6392 & GF 6842)
+
+  Workaround: none.  The next release of the SIW will provide a validation and warning so model owners
+  can fix all defintions prior to attempting to load to caDSR. 
+
+

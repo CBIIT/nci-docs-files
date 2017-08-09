@@ -1,0 +1,137 @@
+
+UML Loader 3.2
+May 2007
+
+
+*************************************
+************ New Features  **********
+*************************************
+
+  - The Loader raises a Warning message if the CDE to which an Attribute is
+  mapped is not the latest version (GF#968)
+
+  - The Loader will now handle Class and Attribute Definitions that are
+  greater than 255 characters long (an EA limit).  This is done using a series
+  of tags, e.g. "documentation[n]" to hold parts of the long definition ([n] can
+  range up to 8). (GF#1039)
+
+  - The Loader now accepts three possibilities for annotating associations:
+  (1)The source role; (2) The target role; and (3) The association itself
+  (GF#1072)
+
+  - The tagged value names for Value Domains and Value Meanings now more accurately
+  describe their content (GF#1077):
+  
+    For Value Domains:
+      ValueDomainConceptCode
+      ValueDomainConceptPreferredName
+
+    For Value Meanings:
+      ValueMeaningConceptCode
+      ValueMeaningConceptPreferredName
+
+
+*************************************
+************               **********
+************   Bug Fixes   **********
+************               **********
+*************************************
+
+
+  - UML Loader not inserting Effective Begin Date for new Object Class
+  and Concept Classes. The new concept classes created by UML Loader
+  will have an effective begin date = date created. (GF#839)
+
+  - UML Loader should be setting the Alternate Name and Definition
+  language to English by default.  The default language is now English.
+  (GF#2982)
+
+  - UML Loader loads concepts for permissible values backwards.  This
+  has been corrected (GF#2989)
+
+  - Permissible Values in enumerated VDs cannot be loaded without a
+  concept. Enumerated Permissible Values can now be loaded with no
+  concept mapping.  The load log now states which permissible values
+  did not get loaded. (GF#3080)
+
+  - Update VM description if it's missing.   If a concept code
+  matches exactly to a VM on Production  and the VM does not have
+  a description (blank), then the VM description is updated
+  with the EVS Concept Definition.  (GF#3367)
+
+  - New VM Created with UML Loader are now getting the Effective
+  Start Date set (GF3394)
+
+  - Value Meanings created by the UML Loader are assigned a default
+  definition if none is provided ("No Definition Provided") (GF#3395)
+
+  - If a VM can't be loaded then the Loader continues to the rest
+  of the VM's instead of moving to the next Value Domain. (GF#3428)
+
+  - The UML Loader now follows the same business rules as does the Curation
+  Tool when evaluating Value Meanings for reuse. (GF#3508)
+
+  - The UML Model Loader now correctly creates Concept Derivation Rules of type
+  "Concatenated" for caDSR objects associated with multiple Concepts (GF#3640)
+
+  - The Loader now checks both CS Long Name and Version before creating a new
+  CS. (GF#3998)
+
+  - The Loader now reuses Concept Derivation Rules.  The reuse decision is
+  based on the concatenation of the associated Concepts (GF#4389)
+
+  - The Loader now creates the default alternate definition for inherited
+  attributes from the childClassDocmentation tag + parentClassAttribute
+  description. (GF#4515)
+
+  - The Loader will no longer load a model with missing descriptions.  (GF#4517)
+
+  - Attributes (Properties) are now getting the correct Alternate Name Type of "UML
+  Attribute" (GF#4614)
+
+  - The Loader now issues a Warning (only) when it encounters a Value Domain
+  that is not used in the current Model.  (GF#5359)
+
+  - The Loader now handles "Abort" requests more gracefully.
+  (GF#5360)
+
+  
+
+ 
+*************************************
+************               **********
+************ Known Issues  **********
+************               **********
+*************************************
+
+
+
+  - Loader will not run without UML.dtd file in source directory (GF#5905)
+
+      ** Workround: Place the DTD file in the source directory.
+
+  - The Loader does not ensure that CADSR_ValueDomainType = "E" for
+  Enumerated Value Domains (GFE5383)
+
+      ** Workaround: Open XMI file using notepad and change the enumeration
+         type to the correct value ('E')
+
+  - Loader reports validation errors but SIW does not report any. (GF#5363)
+
+      ** Workaround: None.  The SIW will be enhancd to report
+         additional errors.
+
+  - Alt Def type should be "UML Class:UML Attr" instead of
+    "UML Class : UML Attr" (GF#2923)
+
+      ** Workaround: when searching for the
+      alternate name, use the existing format (with spaces)
+      instead of the "to-be" format
+
+  - UML Loader should use definition from concept administered
+    component, not XMI file (GF#1295)
+
+
+  - Add Default definition for VM (GF#6030)
+
+      ** Workaround: Assign definitions to all VM's
